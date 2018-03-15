@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#103FD0",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle":"#fff",
+    "enablePillDownRefresh":true,
+    "backgroundColor":"#103FD0",
+    "backgroundTextStyle":"dark"
+  },
+  "tabBar":{
+    "position":"top",
+    "color": "#103FD0",
+    "selectedColor":"#ff7000",
+    "backgroundColor": "#eee",
+    "borderStyle": "black",
+    "list":[
+      {
+      "pagePath":"pages/index/index",
+      "text":"书架"
+      },
+      {
+        "pagePath":"pages/logs/logs",
+        "text":"订阅"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  }
+}
