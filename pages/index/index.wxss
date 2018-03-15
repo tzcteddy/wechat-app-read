@@ -1,25 +1,37 @@
 /**index.wxss**/
-.userinfo {
+.container{
+  width: 100%;
+  height: 100%；
+}
+.container .book{
+ display: flex;
+ width: 100%;
+ flex-direction: row;
+ justify-content: flex-start;
+ align-content: center;
+ flex-wrap: wrap;
+
+}
+.container .book .book-list{
+  padding: 10rpx 25rpx;
+  width: 200rpx;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  flex-direction: row;
+ justify-content:center;
+  align-content: center;
+  flex-wrap: wrap;
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.container .book .book-list .book-pic{
+  width: 100%;
+  height: 280rpx;
+  display: flex;
+ 
 }
-
-.usermotto {
-  margin-top: 100px;
-}
-
-.swiper-img{
-    background: #ff7000;
+.container .book .book-list .book-name{
+ display: flex;
+ width: 100%;
+ font-size: 30rpx;
+ text-align: center;
+ align-content: center;
 }
