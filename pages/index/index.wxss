@@ -3,35 +3,100 @@
   width: 100%;
   height: 100%；
 }
-.container .book{
- display: flex;
- width: 100%;
- flex-direction: row;
- justify-content: flex-start;
- align-content: center;
- flex-wrap: wrap;
-
+.nav-box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }
-.container .book .book-list{
-  padding: 10rpx 25rpx;
-  width: 200rpx;
+.nav{
+    display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
- justify-content:center;
-  align-content: center;
-  flex-wrap: wrap;
-
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #103FD0;
+  color: #FFF;
+  box-sizing: border-box;
 }
-.container .book .book-list .book-pic{
+.nav-active{
+  color: #ff7000;
+}
+.content{
+  padding-top: 80rpx;
+}
+.search{
+  margin-top: 20rpx;
+  padding: 0 20rpx;
   width: 100%;
-  height: 280rpx;
-  display: flex;
- 
+ box-sizing: border-box;
 }
-.container .book .book-list .book-name{
- display: flex;
- width: 100%;
- font-size: 30rpx;
- text-align: center;
- align-content: center;
+.search #search-input{
+  padding-left: 20rpx;
+  width: 100%;
+  height: 66rpx;
+  line-height: 66rpx;
+  border: 1rpx solid #103FD0;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+}
+
+.book{
+  padding: 20rpx 0;
+}
+.book .book-list{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20rpx;
+  align-items: flex-start;
+  padding: 0 20rpx;
+  width: 100%;
+  height: 200rpx
+}
+.book .book-list .book-img{
+  width:20%; 
+  height: 100%;
+  overflow: hidden;
+}
+.book .book-list .book-desc{
+padding:0 20rpx;
+width: 80%;
+height: 100%;
+color:#666;
+box-sizing: border-box;
+}
+.book .book-list .book-desc .book-name{
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+   white-space: nowrap;
+  box-sizing: border-box;
+  color:#000;
+}
+.book .book-list .book-desc .book-stars{
+  margin-bottom: 10rpx;
+  display: flex;
+  justify-content: flex-start;
+  height: 30rpx;
+}
+.book .book-list .book-desc .book-stars .book-stars-list{
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+}
+.book .book-list .book-desc .book-author{
+  font-size: 32rpx;
+  
+}
+.book .book-list .book-desc .book-tabs{
+  font-size: 32rpx;
+  color: #666;
+
 }
