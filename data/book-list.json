@@ -1,0 +1,32 @@
+{
+  "status":"true",
+  "data":[
+    {
+      "book_name": "笑傲江湖",
+      "book_pic": "../image/book-pic",
+      "book_author": "金庸",
+      "book_type": [
+        "武侠"
+      ],
+      "book_score": "3.5"
+    },
+    {
+      "book_name": "笑傲江湖",
+      "book_pic": "../image/book-pic",
+      "book_author": "金庸",
+      "book_type": [
+        "武侠"
+      ],
+      "book_score": "3.5"
+    },
+    {
+      "book_name": "笑傲江湖",
+      "book_pic": "../image/book-pic",
+      "book_author": "金庸",
+      "book_type": [
+        "武侠"
+      ],
+      "book_score": "3.5"
+    }
+  ]
+}

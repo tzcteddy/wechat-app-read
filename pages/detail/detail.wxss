@@ -1,0 +1,60 @@
+ .content{
+  margin-top:20rpx; 
+  padding-bottom: 100rpx;
+  width: 100%;
+  height: 100%;
+}
+.content .book{
+  width: 100%;
+}
+.content .book .book-img{
+  margin: 0 auto 20rpx;
+  width: 300rpx;
+  height: 400rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.content .book .book-img .book-pic{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.content .book-info{
+  width: 100%;
+ 
+}
+.content .book-info .book-info-intro{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 2px solid #103FD0; line-height: 80rpx;
+ 
+}
+.content .book-info  .book-name{
+  padding-top: 10rpx;
+  text-align: center;
+}
+.content .book-info .book-info-intro .book-taps{
+  text-align: center;
+}
+.content .book-info .book-intro-text{
+  padding: 0 20rpx;
+  overflow: hidden;
+  line-height: 40rpx;
+}
+.content .book-info .book-intro-text .book-intro-t{
+  width: 100%;
+}
+.content .read-start{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #103FD0;
+  text-align: center;
+  color: #fff;
+ letter-spacing: 10rpx;
+}

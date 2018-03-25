@@ -1,0 +1,42 @@
+
+  <view class="content">
+  <!--图书信息-->
+    <view class="book" hidden='true'>
+      <view class="book-img">
+        <image class="book-pic" src="../../image/1.png"></image>
+      </view>
+    </view>
+
+    <!--详情、评价-->
+    <view class="book-info">
+      <view>
+        <view class="book-name" style='text-align:center;'>
+          <text>笑傲江湖</text>
+        </view>
+        <view class="book-info-intro">
+          <view class="book-taps">简介</view>
+          <view class="book-taps">评价</view>
+        </view>
+     </view>
+   
+   
+     <scroll-view  scroll-y="true">
+      <!--简介-->
+     
+        <view class="book-intro-text">
+         <text class="book-intro-t">
+         《文化苦旅》是当代学者、作家余秋雨的一部散文集。于1992年首次出版，是余秋雨先生二十世纪八十年代末和九十年代初在海内外讲学和考察途中写下的作品，是他的第一部文化散文集。全书主要包括四部分，分别为如梦起点、中国之旅、世界之旅、人生之旅。[1] 
+全书凭借山水风物来寻求文化灵魂和人生真谛，探索中国文化的历史命运和中国文人的人格。该书获得了全国金钥匙图书二等奖，上海市优秀图书一等奖，上海市第二届文学艺术成果奖，台湾最佳读书奖。[2] 
+《文化苦旅》是当代学者、作家余秋雨的一部散文集。于1992年首次出版，是余秋雨先生二十世纪八十年代末和九十年代初在海内外讲学和考察途中写下的作品，是他的第一部文化散文集。全书主要包括四部分，分别为如梦起点、中国之旅、世界之旅、人生之旅。[1] 
+全书凭借山水风物来寻求文化灵魂和人生真谛，探索中国文化的历史命运和中国文人的人格。该书获得了全国金钥匙图书二等奖，上海市优秀图书一等奖，上海市第二届文学艺术成果奖，台湾最佳读书奖。[2] 
+         </text>
+        </view>
+     
+        <!--评价-->
+       <block></block>
+     </scroll-view>
+  </view>
+  <view class="read-start">
+    <text class="read">阅读</text>
+  </view>
+</view>

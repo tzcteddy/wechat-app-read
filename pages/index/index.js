@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../detail/detail'
     })
   },
   onLoad: function () {
@@ -41,6 +41,15 @@ Page({
           })
         }
       })
+    }
+  },
+  onShow:function(){
+ 
+  },
+  onShareAppMessage:function(){
+    return {
+      title:"读书吧",
+      path:"www.baidu.com"
     }
   },
   getUserInfo: function(e) {

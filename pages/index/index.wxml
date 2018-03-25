@@ -3,7 +3,7 @@
 <!--分类部分-->
 <scroll-view class="nav-box" scroll-x="true" scroll-y="false">
   <view class="nav">
-   <view class="nav-list nav-active">推荐</view>
+   <view class="nav-list nav-active ">推荐</view>
    <view class="nav-list">武侠</view>
    <view class="nav-list">文学</view>
    <view class="nav-list">历史</view>
@@ -18,7 +18,7 @@
     </view>
     <!--列表-->
     <view class="book">
-       <view class="book-list">
+       <view class="book-list" bindtap='bindViewTap'>
           <view class="book-img">
             <image class="book-list-img" src="../../image/1.png"></image>
          </view>
