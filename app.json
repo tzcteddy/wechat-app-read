@@ -1,39 +1,39 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/my/my"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#103FD0",
     "navigationBarTitleText": "首页",
-    "navigationBarTextStyle":"#fff",
-    "enablePillDownRefresh":true,
-    "backgroundColor":"#103FD0",
-    "backgroundTextStyle":"dark"
+    "navigationBarTextStyle": "white",
+    "enablePillDownRefresh": true,
+    "backgroundColor": "#103FD0"
   },
-  "tabBar":{
-    "position":"bottom",
+  "tabBar": {
+    "position": "top",
     "color": "#103FD0",
-    "selectedColor":"#ff7000",
+    "selectedColor": "#ff7000",
     "backgroundColor": "#eee",
     "borderStyle": "black",
-    "list":[
+    "list": [
       {
-      "pagePath":"pages/index/index",
-      "text":"书架"
+        "pagePath": "pages/index/index",
+        "text": "书架"
       },
       {
-        "pagePath":"pages/logs/logs",
-        "text":"订阅"
+        "pagePath": "pages/logs/logs",
+        "text": "订阅"
       },
       {
         "pagePath": "pages/logs/logs",
         "text": "分类"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/my/my",
         "text": "我的"
       }
     ]
@@ -43,5 +43,6 @@
     "connectSocket": 20000,
     "uploadFile": 20000,
     "downloadFile": 20000
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

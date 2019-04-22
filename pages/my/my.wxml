@@ -1,0 +1,13 @@
+
+<view class="userInfo" >
+<button open-type='getUserInfo' bindgetuserinfo="getUserInfo" wx:if="{{!hasUserInfo}}">获取用户信息</button>
+  <view class="base-info" wx:if="{{hasUserInfo}}">
+    <view class="avatar"><image src="{{avatar}}"></image></view>
+    <view class="other">
+      <text>{{userNickName}}</text>
+      <text class='small-font'>{{gender===1?"男":"女"}} {{country}}</text>
+      
+    </view>
+  </view>
+</view>
+

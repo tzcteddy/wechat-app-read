@@ -1,0 +1,31 @@
+<template name="list">
+<scroll-view class="content" scroll-y="ture">
+    <!--搜索-->
+     <view class="search">
+     <input id="search-input" type="text" placeholder="笑傲江湖"></input>
+    </view>
+    <!--列表-->
+    <view class="book">
+       <view class="book-list" wx:key  wx:for="{{bookList}}" bindtap='bindViewTap'>
+          <view class="book-img">
+            <image class="book-list-img" src="../../image/1.png"></image>
+         </view>
+         <view class="book-desc">
+           <text class="book-name">笑傲江湖笑傲江湖笑傲江湖笑傲江湖笑傲江湖笑傲江湖笑傲江湖</text>
+              <view class="book-stars">
+                <image class="book-stars-list" src="../../image/icon/stars/starIcon.png"></image>
+                <image class="book-stars-list"  src="../../image/icon/stars/starIcon.png"></image>
+                <image class="book-stars-list"  src="../../image/icon/stars/starIcon.png"></image>
+                <image class="book-stars-list"  src="../../image/icon/stars/starIcon.png"></image>
+                <image class="book-stars-list"  src="../../image/icon/stars/starIcon.png"></image>
+            </view>
+            <text class="book-author">作者：金庸</text>
+            <view class="book-tabs">
+             <text>分类：</text>
+             <text class="book-tabs-text">武侠</text>
+            </view>
+         </view>
+       </view>
+    </view>
+    </scroll-view>
+</template>
