@@ -1,31 +1,49 @@
 /**index.wxss**/
-@import '../../template/list/list.wxss';
-.container{
+@import '../../template/home/home.wxss';
+page{
   width: 100%;
-  height: 100%；
+  height: 100%;
 }
-.nav-box{
+.wrap{
+  width: 100%;
+  height: 100%;
+}
+.loginPop{
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.loginPop .loginPopCtn{
+  width: 80%;
+}
+.loginPop .loginText{
+  padding: 20rpx;
+  background: #FFF;
+  text-align: center;
 
 }
-.nav{
-  display: inline-block;
-  padding: 0 20rpx;
-  min-width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
-  background: #103FD0;
-  color: #FFF;
-  box-sizing: border-box;
-  white-space: nowrap;
+.loginPop .loginButton{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
-.nav-list{
-  display: inline-block;
-  padding: 10rpx
+.loginPop .loginButton .loginBtnBox{
+  width: 100%;
+  border-top: 1rpx solid #ececec;
+  background: #FFF;
 }
-.nav-active{
-  color: #ff7000;
+.loginPop .loginButton .loginBtnBox:nth-child(1){
+  border-right: 1rpx solid #ececec;
+
+}
+.loginPop .loginButton .loginBtnBox .loginBtn{
+  width: 100%;
+  border: none;
 }
