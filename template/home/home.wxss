@@ -64,6 +64,7 @@
   background: url('https://hbimg.huabanimg.com/a7ed7fffb4de93c7d6ecf0a77b57d620928b182e2c244-4eUbP5_fw658') no-repeat center;
   background-size: cover; 
   -webkit-filter: hue-rotate(150deg);
+
 }
 .homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn{
   position: absolute;
