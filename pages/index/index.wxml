@@ -18,6 +18,6 @@
       </view>
      </view>
   </view>
-<template is="home" data="{{src:src}}"/>
+<template is="home" data="{{...pageInfo}}"/>
 </view>
   

@@ -3,8 +3,9 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #d3f3f3;
+  background: #FFF;
 }
+/*顶部留位*/
 .homeWrap .homeTop{
   position: absolute;
   top: 0;
@@ -13,29 +14,88 @@
   margin: auto;
   width: 100%;
   height: 60rpx;
-  background: red;
 }
+.homeWrap .homeTop .homeOpera{
+  padding:0 20rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.homeWrap .homeTop .homeOpera .screen,.homeWrap .homeTop .homeOpera .search{
+  margin: 0 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+/*中部留位*/
 .homeWrap .homeCtn{
+  position: relative;
   margin: auto;
-  padding: 60rpx 0;
-  width: 680rpx;
+  padding: 60rpx 20rpx 0;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
-.homeWrap .homeCtn .musicBox{
+/*中部音乐盒子框*/
+.homeWrap .homeCtn .musicScroll{
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 16rpx;
+  border-radius: 16rpx 16rpx 0 0;
   background: #FFF;
-  box-shadow: 0 0 10rpx #ececec;
+  box-shadow: 0 0 20rpx 4rpx #ececec;
+  overflow: hidden;
 }
-.homeWrap .homeBtm{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+.homeWrap .homeCtn .musicScroll .musicBox{
+  position: relative;
+  height: 100%;
+}
+/*音乐盒子项*/
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem{
   width: 100%;
+  height: 100%;
+}
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemBg{
+  width: 100%;
+  height: 100%;
+  background: url('https://hbimg.huabanimg.com/a7ed7fffb4de93c7d6ecf0a77b57d620928b182e2c244-4eUbP5_fw658') no-repeat center;
+  background-size: cover; 
+  -webkit-filter: hue-rotate(150deg);
+}
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.homeWrap .homeCtn .musicScroll .musicControls{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150rpx;
+    
+}
+.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton .play,
+.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton .pause{
+  margin: 0 20rpx;
+  width: 60rpx;
   height: 60rpx;
-  background: yellow;
+}
+.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton .share{
+  margin: 0 20rpx;
+  width: 40rpx;
+  height: 40rpx;
 }

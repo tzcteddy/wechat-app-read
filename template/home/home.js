@@ -1,5 +1,8 @@
 
-let currentPage={};
+let currentPage={};//当前页面
+let musicBox={};//需要滑动的音乐盒子
+let pageInfo={};//页面数据
+let indexInit=0;
 /**
  * 获取当前页面实例
  */
@@ -88,6 +91,50 @@ export function isRightSlide(e) {
   }
 }
 
+
+function getMusicBox() {
+  let self=currentPage;
+  let query = wx.createSelectorQuery();
+  query.select("#musicBox").boundingClientRect();
+  query.selectViewport().scrollOffset();
+  query.exec(function (res) {
+  self.setData({
+    'gesture.height': res[0].height
+  })
+    res[0].top       // #the-id节点的上边界坐标
+    res[1].scrollTop // 显示区域的竖直滚动位置
+  })
+}
+
+function setMusicBoxY(y) {
+  
+   y=this.data.gesture.index*this.data.gesture.height+y;
+  const Animation = wx.createAnimation({ duration: 0 })
+  Animation.translateY(y).step();
+  this.setData({
+    'pageInfo.animationData': Animation.export()
+  })
+}
+function move(e){
+  const { startX, startY } = this.data.gesture;
+    const t = e.touches[0];
+    const deltaX = t.clientX - startX;
+    const deltaY = t.clientY - startY;
+  if (Math.abs(deltaY)>400/2){
+    if (deltaY < 0) { this.setData({ "gesture.direction": -1 }) }
+    if (deltaY > 0) { this.setData({ "gesture.direction": 1 }) }
+  }
+  setMusicBoxY.call(currentPage, deltaY)
+}
+function resetTranlateY(index){
+  const Animation = wx.createAnimation({})
+  let height=this.data.gesture.height;
+  Animation.translateY(index * height).step();
+  this.setData({
+    'pageInfo.animationData': Animation.export()
+  })
+}
+
 let conf={
   
  //滑动开始 
@@ -95,10 +142,13 @@ musicTouchstart(e) {
   const t = e.touches[0];
   const startX = t.clientX;
   const startY = t.clientY;
-  currentPage.slideLock = true; // 滑动事件加锁
+  getMusicBox()
+ 
   currentPage.setData({
     'gesture.startX': startX,
-    'gesture.startY': startY
+    'gesture.startY': startY,
+    'gesture.direction':0,
+    'gesture.index': (currentPage.data.gesture && currentPage.data.gesture.index) ? currentPage.data.gesture.index : indexInit,
   });
 },
 
@@ -108,25 +158,15 @@ musicTouchstart(e) {
  */
   musicTouchmove(e) {
     const self = currentPage;
-    if (isLeftSlide.call(self, e)) {
-      self.setData({
-        'calendar.leftSwipe': 1
-      });
-      
-    }
-    if (isRightSlide.call(self, e)) {
-      self.setData({
-        'calendar.rightSwipe': 1
-      });
-      
-    }
-  
+    move.call(self,e); 
   },
   musicTouchend(e) {
     const self = currentPage;
+    let index = self.data.gesture.index + self.data.gesture.direction;
+    resetTranlateY.call(self,index);
     self.setData({
-      'calendar.leftSwipe': 0,
-      'calendar.rightSwipe': 0
+      'gesture.direction': 0,
+      'gesture.index':index
     });
   },
   audioPlay() {
@@ -175,8 +215,9 @@ function bindFunctionToPage(events) {
 
 export default (config={})=>{
   currentPage=getCurrentPage();
+  //getMusicBox()
   currentPage.setData({
-    src: "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46"
+    'pageInfo.src': "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46"
   })
   const events = [
     'musicTouchstart',
