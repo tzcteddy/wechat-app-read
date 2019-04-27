@@ -170,6 +170,7 @@ musicTouchstart(e) {
     });
   },
   audioPlay() {
+    console.log(this);
     this.audioCtx.play()
   },
   audioPause: function () {
@@ -206,8 +207,9 @@ musicTouchstart(e) {
 function bindFunctionToPage(events) {
   if (!events || !events.length) return;
 
-  this.audioCtx =wx.createAudioContext('myAudio')
-  
+  this.audioCtx = wx.createInnerAudioContext('myAudio')
+  this.audioCtx.autoplay=true;
+  this.audioCtx.onCanplay(()=>{console.log("可以播放")})
   events.forEach(item => {
     this[item] = conf[item].bind(this);
   });
@@ -217,7 +219,7 @@ export default (config={})=>{
   currentPage=getCurrentPage();
   //getMusicBox()
   currentPage.setData({
-    'pageInfo.src': "https://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46"
+    'pageInfo.src': "https://s320.xiami.net/887/887/4425/53889_1516768398156.mp3?ccode=xiami_web_web&expire=86400&duration=432&psid=5c6069f59e45c81267697f9ec1f40e55&ups_client_netip=124.65.148.182&ups_ts=1556357713&ups_userid=0&utid=2NXRFGKhAi4CAXxBlLYZt4va&vid=53889&fn=53889_1516768398156.mp3&vkey=B13050589ccd4b2dd8999c17a57d075bd"
   })
   const events = [
     'musicTouchstart',
