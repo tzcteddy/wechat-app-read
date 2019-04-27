@@ -22,7 +22,15 @@
                 bindtimeupdate="funtimeupdate" 
                 bindended="funended" 
                 binderror="funerror"></audio>
-                
+                <view class="musicInfo">
+                    <view class="musicWord">
+                       <text class="musicWord-text musicWord-cur">嘻嘻哈哈</text>
+                       <text class="musicWord-text musicWord-next">细雨带风湿透黄昏的街道</text>
+                       <text class="musicWord-text musicWord-next">细雨带风湿透黄昏的街道</text>
+
+                    </view>
+                    <view class="musicName"><text>告白气球龙卷风</text></view>
+                </view>
               </view>
             </view>
             <view class="musicItem">
@@ -35,7 +43,15 @@
                 bindtimeupdate="funtimeupdate" 
                 bindended="funended" 
                 binderror="funerror"></audio>
-                
+                <view class="musicInfo">
+                    <view class="musicWord">
+                       <text class="musicWord-text musicWord-cur">嘻嘻哈哈</text>
+                       <text class="musicWord-text musicWord-next">细雨带风湿透黄昏的街道</text>
+                       <text class="musicWord-text musicWord-next">细雨带风湿透黄昏的街道</text>
+
+                    </view>
+                    <view class="musicName"><text>告白气球龙卷风</text></view>
+                </view>
               </view>
             </view>
           </view>
@@ -43,10 +59,12 @@
             <view class="musicControlsButton">
                <image class="play" 
                 bindtap="audioPlay"       
-                 src='../../image/icon/play.png'></image>
+                 src='../../image/icon/play.png' wx:if="{{!isPlay}}"></image>
                <image class="pause"  
                bindtap="audioPause" 
-               src="../../image/icon/pause.png"></image>
+               src="../../image/icon/pause.png" wx:if="{{isPlay}}"></image>
+               <image class="collect" 
+               src="../../image/icon/collect.png"></image>
                <image class="share" 
                src="../../image/icon/share.png"></image>
             </view>

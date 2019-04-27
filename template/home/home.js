@@ -3,6 +3,7 @@ let currentPage={};//当前页面
 let musicBox={};//需要滑动的音乐盒子
 let pageInfo={};//页面数据
 let indexInit=0;
+import confFn from './event.js';  
 /**
  * 获取当前页面实例
  */
@@ -91,23 +92,21 @@ export function isRightSlide(e) {
   }
 }
 
-
+//获取音乐视图的高度
 function getMusicBox() {
   let self=currentPage;
   let query = wx.createSelectorQuery();
   query.select("#musicBox").boundingClientRect();
   query.selectViewport().scrollOffset();
   query.exec(function (res) {
-  self.setData({
-    'gesture.height': res[0].height
-  })
-    res[0].top       // #the-id节点的上边界坐标
-    res[1].scrollTop // 显示区域的竖直滚动位置
+    self.setData({
+      'gesture.height': res[0].height
+    })
   })
 }
 
+//滑动中改变音乐盒子的Y值
 function setMusicBoxY(y) {
-  
    y=this.data.gesture.index*this.data.gesture.height+y;
   const Animation = wx.createAnimation({ duration: 0 })
   Animation.translateY(y).step();
@@ -115,6 +114,7 @@ function setMusicBoxY(y) {
     'pageInfo.animationData': Animation.export()
   })
 }
+//滑动中的事件要执行的方法
 function move(e){
   const { startX, startY } = this.data.gesture;
     const t = e.touches[0];
@@ -126,6 +126,7 @@ function move(e){
   }
   setMusicBoxY.call(currentPage, deltaY)
 }
+//滑动结束重置音乐盒子的Y值
 function resetTranlateY(index){
   const Animation = wx.createAnimation({})
   let height=this.data.gesture.height;
@@ -136,37 +137,36 @@ function resetTranlateY(index){
 }
 
 let conf={
-  
- //滑动开始 
-musicTouchstart(e) {
-  const t = e.touches[0];
-  const startX = t.clientX;
-  const startY = t.clientY;
-  getMusicBox()
- 
-  currentPage.setData({
-    'gesture.startX': startX,
-    'gesture.startY': startY,
-    'gesture.direction':0,
-    'gesture.index': (currentPage.data.gesture && currentPage.data.gesture.index) ? currentPage.data.gesture.index : indexInit,
-  });
-},
+  //滑动开始 
+  musicTouchstart(e) {
+    const t = e.touches[0];
+    const startX = t.clientX;
+    const startY = t.clientY;
+    getMusicBox()
 
-/**
- * 滑动中
- * @param {object} e
- */
+    currentPage.setData({
+      'gesture.startX': startX,
+      'gesture.startY': startY,
+      'gesture.direction': 0,
+      'gesture.index': (currentPage.data.gesture && currentPage.data.gesture.index) ? currentPage.data.gesture.index : indexInit,
+    });
+  },
+
+  /**
+   * 滑动中
+   * @param {object} e
+   */
   musicTouchmove(e) {
     const self = currentPage;
-    move.call(self,e); 
+    move.call(self, e);
   },
   musicTouchend(e) {
     const self = currentPage;
     let index = self.data.gesture.index + self.data.gesture.direction;
-    resetTranlateY.call(self,index);
+    resetTranlateY.call(self, index);
     self.setData({
       'gesture.direction': 0,
-      'gesture.index':index
+      'gesture.index': index
     });
   },
   audioPlay() {
@@ -198,7 +198,7 @@ musicTouchstart(e) {
   funerror: function (u) {
     console.log(u.detail.errMsg);
   }
-}
+};
 
 /**
  * 注册事件至当前页面
