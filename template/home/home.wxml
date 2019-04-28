@@ -12,30 +12,22 @@
           bindtouchmove='musicTouchmove' 
           bindtouchend='musicTouchend'>
           <view class="musicBox" id="musicBox" animation="{{animationData}}">
-            <view class="musicItem">
-              <view class="musicItemBg"></view>
+            <view class="musicItem" wx:key="index" wx:for="{{musicData}}">
+              <view class="musicItemBg" style="background:url('{{item.cover_image}}') no-repeat center"></view>
               <view class="musicItemCtn">
-                <audio id="myaudio"   
-                src="{{src}}"
-                bindplay="funplay" 
-                bindpause="funpause" 
-                bindtimeupdate="funtimeupdate" 
-                bindended="funended" 
-                binderror="funerror"></audio>
-                
-              </view>
-            </view>
-            <view class="musicItem">
-              <view class="musicItemBg"></view>
-              <view class="musicItemCtn">
-                <audio id="myaudio"   
-                src="{{src}}"
-                bindplay="funplay" 
-                bindpause="funpause" 
-                bindtimeupdate="funtimeupdate" 
-                bindended="funended" 
-                binderror="funerror"></audio>
-                
+                <view class="musicInfo">
+                  <view class="musicWord">
+                     <view class="musicWordScroll">
+                        <text class="musicWordCur">爱我中华，爱我中华</text>
+                        <text class="musicWordText">五十六个民族是一家</text>
+                        <text class="musicWordText">五十六个民族是一家</text>
+                     </view>
+                  </view>
+                  <view class="musicName">
+                    <text class="musicNameText">{{item.song_name}}</text>
+                    <text class="musicAuthorText">宋祖英</text>
+                  </view>
+                </view>
               </view>
             </view>
           </view>
@@ -43,10 +35,12 @@
             <view class="musicControlsButton">
                <image class="play" 
                 bindtap="audioPlay"       
-                 src='../../image/icon/play.png'></image>
+                 src='../../image/icon/play.png' wx:if="{{!isPlay}}"></image>
                <image class="pause"  
                bindtap="audioPause" 
-               src="../../image/icon/pause.png"></image>
+               src="../../image/icon/pause.png" wx:if="{{isPlay}}"></image>
+                <image class="share" 
+               src="../../image/icon/collect.png"></image>
                <image class="share" 
                src="../../image/icon/share.png"></image>
             </view>

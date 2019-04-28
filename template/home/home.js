@@ -3,6 +3,30 @@ let currentPage={};//当前页面
 let musicBox={};//需要滑动的音乐盒子
 let pageInfo={};//页面数据
 let indexInit=0;
+let musicData =  [
+  {
+    song_name: "测试",
+    src: "http://img02.tuke88.com/newpreview_music/08/99/75/5c8994d61bd3178463.mp3",
+    cover_image: "https://hbimg.huabanimg.com/aab55062a2b240c160536eaf0dabc1858a6e950b10312-bYZSdR_fw658"
+  },
+  {
+    song_name:"重庆时间",
+    src:"http://111.202.98.143/amobile.music.tc.qq.com/C400002SoON91eX8z3.m4a?guid=9429749972&vkey=D356EA1340B3A8E35A8ECE2BE9F4B7C236A24CD256CAC05C9FB127C8ECD7F980EAEF592EE8A7639AFD221C5C2D4061AEC04E0F0C8FA516A7&uin=0&fromtag=66",
+    cover_image:"https://hbimg.huabanimg.com/716780614db25dfd47dc3781595d77dfdebd4b171dbcf-La1rjv_fw658"
+      },
+  {
+    song_name: "爱你大理",
+    src: "http://111.202.98.143/amobile.music.tc.qq.com/C400001Zd32g3JDKWQ.m4a?guid=9429749972&vkey=6FB9EB02FCC88D7AF10184DD0074B23CDA84943650777A51FDE7E4C69B177001ACA1619937DB99B9A945E42C05DE618A44DCF7592E0BED56&uin=0&fromtag=66",
+    cover_image: "https://hbimg.huabanimg.com/7bebd034af56d6b28147984a36366b8b4428a40dc1d2a-hKGzAt_fw658"
+      },
+  {
+    song_name:"赵小雷",
+    src:"http://111.202.85.142/amobile.music.tc.qq.com/C400003R4eS904eQjQ.m4a?guid=9429749972&vkey=B24DCC56991C0EEA82CD1B55FF2EDD5EEEE9442782C3470D4F875572E870226AC1F304E1DA6B44DD6FCC75AFEE41F383CD7C6D3DDCBF337D&uin=0&fromtag=66",
+    cover_image: "https://hbimg.huabanimg.com/3c10dd5a263cc2540248247e38e5c536e0a77b44d88f7-l2oh3A_fw658"
+      }
+]
+let curMusicIndex=0;//当前播放的音乐列表的位置
+let curMusic=[];
 /**
  * 获取当前页面实例
  */
@@ -108,8 +132,8 @@ function getMusicBox() {
 
 function setMusicBoxY(y) {
   
-   y=this.data.gesture.index*this.data.gesture.height+y;
-  const Animation = wx.createAnimation({ duration: 0 })
+   y=this.data.gesture.index*this.data.gesture.height*-1+y;
+  const Animation = wx.createAnimation({ duration: 0,delay:0 })
   Animation.translateY(y).step();
   this.setData({
     'pageInfo.animationData': Animation.export()
@@ -120,22 +144,40 @@ function move(e){
     const t = e.touches[0];
     const deltaX = t.clientX - startX;
     const deltaY = t.clientY - startY;
-  if (Math.abs(deltaY)>400/2){
+  if (Math.abs(deltaY)>this.data.gesture.height/2){
     if (deltaY < 0) { this.setData({ "gesture.direction": -1 }) }
-    if (deltaY > 0) { this.setData({ "gesture.direction": 1 }) }
+    if (deltaY >= 0) { this.setData({ "gesture.direction": 1 }) }
   }
   setMusicBoxY.call(currentPage, deltaY)
+}
+
+function setCurMusic(index) {
+  index = index || 0;
+  let self = this;
+  this.audioCtx = this.audioCtx || wx.createInnerAudioContext();
+  this.audioCtx.src = this.data.pageInfo.musicData[index].src;
+  this.audioCtx.autoplay = true;
+  this.audioCtx.onEnded(function () {  
+    
+  })
+  this.setData({
+    "pageInfo.isPlay": true
+  })
+  this.audioCtx.onCanplay(() => { console.log("可以播放") })
 }
 function resetTranlateY(index){
   const Animation = wx.createAnimation({})
   let height=this.data.gesture.height;
-  Animation.translateY(index * height).step();
+  Animation.translateY(index * height * -1).step();
   this.setData({
     'pageInfo.animationData': Animation.export()
   })
+  if(this.data.gesture.direction!==0){
+   setCurMusic.call(this,index);
+  }
 }
 
-let conf={
+let evenConf={
   
  //滑动开始 
 musicTouchstart(e) {
@@ -148,7 +190,7 @@ musicTouchstart(e) {
     'gesture.startX': startX,
     'gesture.startY': startY,
     'gesture.direction':0,
-    'gesture.index': (currentPage.data.gesture && currentPage.data.gesture.index) ? currentPage.data.gesture.index : indexInit,
+    'gesture.index': (currentPage.data.gesture && currentPage.data.gesture.index) ?     currentPage.data.gesture.index : indexInit,
   });
 },
 
@@ -162,7 +204,7 @@ musicTouchstart(e) {
   },
   musicTouchend(e) {
     const self = currentPage;
-    let index = self.data.gesture.index + self.data.gesture.direction;
+    let index = self.data.gesture.index + self.data.gesture.direction*(-1);
     resetTranlateY.call(self,index);
     self.setData({
       'gesture.direction': 0,
@@ -170,11 +212,16 @@ musicTouchstart(e) {
     });
   },
   audioPlay() {
-    console.log(this);
-    this.audioCtx.play()
+    this.audioCtx.play();
+    this.setData({
+      "pageInfo.isPlay":true
+    })
   },
   audioPause: function () {
-    this.audioCtx.pause()
+    this.audioCtx.pause();
+    this.setData({
+      "pageInfo.isPlay": false
+    })
   },
   audio14: function () {
     this.audioCtx.seek(14)
@@ -206,21 +253,18 @@ musicTouchstart(e) {
  */
 function bindFunctionToPage(events) {
   if (!events || !events.length) return;
-
-  this.audioCtx = wx.createInnerAudioContext('myAudio')
-  this.audioCtx.autoplay=true;
-  this.audioCtx.onCanplay(()=>{console.log("可以播放")})
+  this.setData({
+    "pageInfo.musicData": musicData
+  })
+  setCurMusic.call(currentPage)
   events.forEach(item => {
-    this[item] = conf[item].bind(this);
+    this[item] = evenConf[item].bind(this);
   });
 }
 
 export default (config={})=>{
   currentPage=getCurrentPage();
   //getMusicBox()
-  currentPage.setData({
-    'pageInfo.src': "https://s320.xiami.net/887/887/4425/53889_1516768398156.mp3?ccode=xiami_web_web&expire=86400&duration=432&psid=5c6069f59e45c81267697f9ec1f40e55&ups_client_netip=124.65.148.182&ups_ts=1556357713&ups_userid=0&utid=2NXRFGKhAi4CAXxBlLYZt4va&vid=53889&fn=53889_1516768398156.mp3&vkey=B13050589ccd4b2dd8999c17a57d075bd"
-  })
   const events = [
     'musicTouchstart',
     'musicTouchmove',

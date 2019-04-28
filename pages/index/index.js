@@ -8,7 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     hideLoginPop: !!wx.getStorageSync("userInfo"),
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+   
   },
   onLoad: function () {
    
