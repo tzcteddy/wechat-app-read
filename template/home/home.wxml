@@ -27,8 +27,8 @@
                     <text class="musicNameText">{{item.song_name}}</text>
                     <text class="musicAuthorText">宋祖英</text>
                   </view>
-                </view>
               </view>
+            </view>
             </view>
           </view>
           <view class="musicControls">
@@ -39,7 +39,7 @@
                <image class="pause"  
                bindtap="audioPause" 
                src="../../image/icon/pause.png" wx:if="{{isPlay}}"></image>
-                <image class="share" 
+              <image class="share" 
                src="../../image/icon/collect.png"></image>
                <image class="share" 
                src="../../image/icon/share.png"></image>
@@ -47,6 +47,5 @@
           </view>
         </view>
       </view>
-      
   </view>
 </template>

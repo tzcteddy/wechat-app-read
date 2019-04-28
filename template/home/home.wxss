@@ -63,8 +63,7 @@
   width: 100%;
   height: 100%;
   background-size: cover; 
-  -webkit-filter: hue-rotate(0deg);
-
+  -webkit-filter: hue-rotate(50deg);
 }
 .homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn{
   position: absolute;
@@ -98,6 +97,26 @@
   line-height: 50rpx;
   font-size: 40rpx;
   color: #FFF;
+}
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn .musicInfo .musicWord{
+  padding: 0 20rpx;
+  width: 100%;
+  height: 150rpx;
+  overflow: hidden;
+}
+
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn .musicInfo .musicWord .musicWord-text{
+  display: block;
+  line-height: 50rpx;
+  font-size: 34rpx;
+  color:#ececec;
+}
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn .musicInfo .musicWord .musicWord-cur{
+   font-size: 40rpx;
+   color: #FFF;
+}
+.homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn .musicInfo .musicWord .musicWord-next{
+  color: #ececec;
 }
 .homeWrap .homeCtn .musicScroll .musicBox .musicItem .musicItemCtn .musicInfo .musicName{
   position: absolute;
@@ -142,7 +161,8 @@
   width: 60rpx;
   height: 60rpx;
 }
-.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton .share{
+.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton .share,
+.homeWrap .homeCtn .musicScroll .musicControls .musicControlsButton .collect{
   margin: 0 20rpx;
   width: 50rpx;
   height: 50rpx;
