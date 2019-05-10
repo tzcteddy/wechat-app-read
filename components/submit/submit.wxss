@@ -52,10 +52,18 @@
   line-height: 60rpx;
   font-size: 32rpx;
 }
-.submit .submitEntry .other{
+.submit .submitEntry .emojiEntry{
   width: 60rpx;
   height: 60rpx;
   line-height: 60rpx;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 50rpx;
+}
+.submit .submitEntry .other{
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   border-radius: 50%;
   background: #ececec;
   text-align: center;

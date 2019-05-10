@@ -4,6 +4,7 @@
       <scroll-view scroll-y class="inputWrap">
         <textarea></textarea>
       </scroll-view>
+      <view  class="emojiEntry">😜</view>
       <view class="other">+</view>
       <view class="send">发送</view>
    </view>
