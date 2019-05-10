@@ -1,0 +1,5 @@
+<import src="../../template/chat/chat.wxml"/>
+<view class="container">
+   <template is="chat"></template>
+   <submit></submit>
+</view>

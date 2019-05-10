@@ -3,6 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
+    "pages/content/content",
+    "pages/interactive/interactive",
     "pages/my/my"
   ],
   "window": {
@@ -25,7 +27,7 @@
         "text": "书架"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/content/content",
         "text": "订阅"
       },
       {

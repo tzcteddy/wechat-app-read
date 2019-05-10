@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<import src="../../template/home/home.wxml"/>
+<view class="wrap" >
+  <view class="loginPop" wx:if="{{!hideLoginPop}}">
+     <view class="loginPopCtn">
+     <view class="loginText"><text>确定登录</text></view>
+     <view class="loginText"><text>需要获取您的个人信息</text></view>
+      <view class="loginButton">
+        <view class="loginBtnBox">
+          <button class="loginBtn loginCancel" 
+                  plain="true" 
+                  bindtap="onhideLoginPopFn" >取消</button></view>
+        <view class="loginBtnBox">
+          <button class="loginBtn" 
+                  open-type='getUserInfo' 
+                  plain="true" 
+                  bindgetuserinfo="getUserInfo" >确定 </button></view>
+      </view>
+     </view>
+  </view>
+    <view class="homeWrap">
+      <view class="homeTop">
+        <view class="homeOpera">
+           <navigator 
+              url="/pages/interactive/interactive" 
+              target="self" >
+              <image class="screen" src="../../image/icon/screen.png"></image>
+           </navigator>
+           <image class="search" src="../../image/icon/search.png"></image>
+        </view>
+      </view>
+      <view class="homeCtn">
+        <music></music>
+      </view>
+  </view>
+</view>
+  

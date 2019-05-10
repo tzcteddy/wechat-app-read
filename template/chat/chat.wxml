@@ -1,0 +1,21 @@
+<template name="chat">
+<scroll-view scroll-y class="chat">
+  <view class="chatContent">
+      <view class="chatItem" wx:key="index" wx:for="{{30}}">
+          <text class="chatDate">05-10 14:30</text>
+          <view class="chatInfo">
+              <view class="avatar" class="{{index%2==0?'avatar woman':'avatar man'}}"></view>
+              <view class="chatDetail">
+                  <view class="chatUser">
+                      <text class="chatUserName">一起放风筝的日子</text>
+                      <image class="chatUserGender"></image>
+                  </view>
+                  <view class="chatSubmit">
+                      <text class="chatSubmitText">哈哈哈</text>
+                  </view>
+              </view>
+          </view>
+      </view>
+  </view>
+</scroll-view>
+</template>

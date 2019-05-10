@@ -1,0 +1,78 @@
+.chat{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.chat .chatContent{
+  width: 100%;
+}
+.chat .chatContent .chatItem{
+  padding: 20rpx;
+}
+.chat .chatContent .chatItem .chatDate{
+  margin: auto;
+  display: block;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+  color: #ececec;
+  text-align: center;
+}
+.chat .chatContent .chatItem .chatInfo{
+   display: flex;
+   flex-direction: row;
+   justify-content: left;
+   align-items: flex-start;
+
+}
+.chat .chatContent .chatItem .chatInfo .avatar{
+  margin-right: 16rpx;
+  flex-shrink: 0;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  
+  background: #ececec;
+  overflow: hidden;
+}
+.chat .chatContent .chatItem .chatInfo .avatar.man{
+  border: 2rpx solid blue;
+}
+.chat .chatContent .chatItem .chatInfo .avatar.woman{
+  border: 2rpx solid pink;
+}
+.chat .chatContent .chatItem .chatInfo .chatDetail{
+  width: 100%;
+}
+.chat .chatContent .chatItem .chatInfo .chatDetail .chatUser{
+  margin-bottom: 20rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: left;
+   align-items: center;
+}
+.chat .chatContent .chatItem .chatInfo .chatDetail .chatUser .chatUserName{
+  font-size: 28rpx;
+  color: #FFF;
+  width: 260rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.chat .chatContent .chatItem .chatInfo .chatDetail .chatUser .chatUserGender{
+  width: 0;
+  height: 0;
+}
+.chat .chatContent .chatItem .chatInfo .chatDetail .chatSubmit{
+  display: inline-block;
+  max-width: 260rpx;
+  padding: 10rpx 20rpx;
+  background:rgba(255, 255, 255, 0.6);
+  border-radius: 16rpx;
+}
+.chat .chatContent .chatItem .chatInfo .chatDetail .chatSubmit .chatSubmitText{
+  font-size: 28rpx;
+  line-height: 40rpx;
+}

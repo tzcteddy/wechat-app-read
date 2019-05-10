@@ -1,0 +1,91 @@
+/**index.wxss**/
+page{
+  width: 100%;
+  height: 100%;
+}
+.wrap{
+  width: 100%;
+  height: 100%;
+}
+.loginPop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.loginPop .loginPopCtn{
+  width: 80%;
+}
+.loginPop .loginText{
+  padding: 20rpx;
+  background: #FFF;
+  text-align: center;
+
+}
+.loginPop .loginButton{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.loginPop .loginButton .loginBtnBox{
+  width: 100%;
+  border-top: 1rpx solid #ececec;
+  background: #FFF;
+}
+.loginPop .loginButton .loginBtnBox:nth-child(1){
+  border-right: 1rpx solid #ececec;
+
+}
+.loginPop .loginButton .loginBtnBox .loginBtn{
+  width: 100%;
+  border: none;
+}
+
+.homeWrap{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #FFF;
+}
+/*顶部留位*/
+.homeWrap .homeTop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 60rpx;
+  z-index: 2;
+}
+.homeWrap .homeTop .homeOpera{
+  padding:0 20rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.homeWrap .homeTop .homeOpera .screen,.homeWrap .homeTop .homeOpera .search{
+  margin: 0 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+/*中部留位*/
+.homeWrap .homeCtn{
+  position: relative;
+  margin: auto;
+  padding: 60rpx 20rpx 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
