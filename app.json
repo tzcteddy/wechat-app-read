@@ -5,7 +5,8 @@
     "pages/detail/detail",
     "pages/content/content",
     "pages/interactive/interactive",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/userDetail/userDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

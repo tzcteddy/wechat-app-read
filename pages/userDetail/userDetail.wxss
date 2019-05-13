@@ -1,0 +1,29 @@
+/* pages/userDetail/userDetail.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.userDetail{
+  width: 100%;
+}
+.userDetail .userBanner{
+  width: 100%;
+  background: #848ff3;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.userDetail .userBanner .userInfo{
+   width: 400rpx;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.userDetail .userBanner .userInfo .userAvatar{
+  width:100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ececec;
+}

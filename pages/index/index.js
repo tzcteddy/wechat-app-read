@@ -41,7 +41,8 @@ Page({
     this.onhideLoginPopFn()
   },
   onShow:function(){
-    touch();
+  touch();
+   
   },
   onShareAppMessage:function(){
     return {

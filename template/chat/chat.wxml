@@ -4,7 +4,7 @@
       <view class="chatItem" wx:key="index" wx:for="{{30}}">
           <text class="chatDate">05-10 14:30</text>
           <view class="chatInfo">
-              <view class="avatar" class="{{index%2==0?'avatar woman':'avatar man'}}"></view>
+              <view class="avatar" data-id="{{1}}" bindtap="toUserDetail" class="{{index%2==0?'avatar woman':'avatar man'}}"></view>
               <view class="chatDetail">
                   <view class="chatUser">
                       <text class="chatUserName">一起放风筝的日子</text>

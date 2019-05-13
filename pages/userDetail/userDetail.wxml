@@ -1,0 +1,9 @@
+<!--pages/userDetail/userDetail.wxml-->
+<view class="userDetail">
+   <view class="userBanner" id="userBanner" style="height:{{bannerHeight+'px'}}">
+      <view class="userInfo">
+         <view class="userAvatar"></view>
+         <view class="userNickName">一起放风筝的日子</view>
+      </view>
+   </view>
+</view>
