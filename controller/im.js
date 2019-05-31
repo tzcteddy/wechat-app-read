@@ -1,10 +1,10 @@
-import MD5 from '../vendors/md5.js'
+//import MD5 from '../vendors/md5.js'
 import NIM from '../vendors/NIM_Web_NIM_weixin_v6.0.0.js'
 import NetcallController from './netcall.js'
-import { updateMultiPortStatus, deepClone, dealMsg, showToast } from '../utils/util.js'
+//import { updateMultiPortStatus, deepClone, dealMsg, showToast } from '../utils/util.js'
 
 let app = getApp()
-let store = app.store
+//let store = app.store
 
 let orderCounter = 1
 // 第一次进去onConnect onBlacklist onMutelist onFriends onMyInfo onUsers onTeams SyncDone onPushEvents
@@ -14,9 +14,9 @@ export default class IMController {
     app.globalData.nim = NIM.getInstance({
       // 初始化SDk
       // debug: true,
-      appKey: app.globalData.ENVIRONMENT_CONFIG.appkey,
-      token: MD5(headers.token),
-      account: headers.account,
+      appKey:"e8d836ed8bdade36fe85559f1ab7a535",// app.globalData.ENVIRONMENT_CONFIG.appkey,
+      token:"d0a434bf7975ceaee60f19b6748a96c6",// MD5(headers.token),
+      account: "453",//headers.account,
       promise: true,
       transports: ['websocket'],
       syncSessionUnread: true, // 同步未读数
@@ -25,7 +25,7 @@ export default class IMController {
       ondisconnect: this.onDisconnect,
       onerror: this.onError,
       // 私有化配置文件
-      privateConf: app.globalData.ENVIRONMENT_CONFIG.openPrivateConf ? app.globalData.ENVIRONMENT_CONFIG.privateConf : '',
+     //privateConf: app.globalData.ENVIRONMENT_CONFIG.openPrivateConf ? app.globalData.ENVIRONMENT_CONFIG.privateConf : '',
       // 同步完成
       onsyncdone: this.onSyncDone,
       // 用户关系
@@ -77,9 +77,9 @@ export default class IMController {
       onpushevents: this.onPushEvents,
     })
     // 发送消息开始登陆
-    store.dispatch({
-      type: 'Login_StartLogin'
-    })
+   // store.dispatch({
+     // type: 'Login_StartLogin'
+    //})
   }
   /** 1
    * 连接成功
@@ -107,10 +107,10 @@ export default class IMController {
         })
       })
       // 更新好友全局状态
-      store.dispatch({
-        type: 'FriendCard_Update_Online_Status',
-        payload: statusArr
-      })
+      //store.dispatch({
+       // type: 'FriendCard_Update_Online_Status',
+       // payload: statusArr
+      //})
     }
   }
   /** 3
@@ -118,10 +118,10 @@ export default class IMController {
  */
   onBlacklist(blacklist) {
     console.log(orderCounter++, ' onBlacklist: ', blacklist)
-    store.dispatch({
-      type: 'Blacklist_Update_Initial',
-      payload: blacklist
-    })
+    // store.dispatch({
+    //   type: 'Blacklist_Update_Initial',
+    //   payload: blacklist
+    // })
   }
   /** 4
    * onMutelist
@@ -134,10 +134,10 @@ export default class IMController {
    */
   onFriends(friends) {
     console.log(orderCounter++, ' onFriends: ', friends)
-    store.dispatch({
-      type: 'FriendCard_Update_Initial',
-      payload: friends
-    })
+    // store.dispatch({
+    //   type: 'FriendCard_Update_Initial',
+    //   payload: friends
+    // })
     if (app.globalData.ENVIRONMENT_CONFIG.openSubscription) {
       app.globalData.nim.subscribeEvent({
         type: 1, // 订阅用户登录状态事件
@@ -154,20 +154,20 @@ export default class IMController {
    */
   onMyInfo(user) {
     console.log(orderCounter++, ' onMyInfo: ')
-    store.dispatch({
-      type: 'IM_OnMyInfo',
-      payload: user
-    })
+    // store.dispatch({
+    //   type: 'IM_OnMyInfo',
+    //   payload: user
+    // })
   }
   /** 7
    * 包含名片的好友信息（可能某些字段不全），[{account,avatar,birth,createTime,email,gender,nick,sign,updateTime}]
    */
   onUsers(friends) {
     console.log(orderCounter++, ' onUsers: ', friends)
-    store.dispatch({
-      type: 'FriendCard_Update_Initial',
-      payload: friends
-    })
+    // store.dispatch({
+    //   type: 'FriendCard_Update_Initial',
+    //   payload: friends
+    // })
   }
   /** 8 同步群列表
    * onTeams
@@ -175,19 +175,19 @@ export default class IMController {
   onTeams(teams) {
     console.log(orderCounter++, 'onTeams')
     console.log(teams)
-    store.dispatch({
-      type: 'Init_Groups',
-      payload: teams
-    })
+    // store.dispatch({
+    //   type: 'Init_Groups',
+    //   payload: teams
+    // })
   }
   /** 9
    * onSyncDone,同步完成
    */
   onSyncDone() {
     console.log(orderCounter++, ' Sync Done')
-    store.dispatch({
-      type: 'Login_LoginSuccess'
-    })
+    // store.dispatch({
+    //   type: 'Login_LoginSuccess'
+    // })
     let pages = getCurrentPages()
     let currentPage = pages[pages.length - 1]
     if (currentPage.route.includes('login') || currentPage.route.includes('register')) {
@@ -204,10 +204,10 @@ export default class IMController {
   onUpdateSession(session) {
     console.log('onUpdateSession: ', session)
     try {
-      store.dispatch({
-        type: 'UnreadInfo_update',
-        payload: session
-      })
+      // store.dispatch({
+      //   type: 'UnreadInfo_update',
+      //   payload: session
+      // })
     } catch(error) {
     }
   }
@@ -218,10 +218,10 @@ export default class IMController {
   onMsg(msg) {
     console.log('onMsg: 收到消息', msg)
     try {
-      store.dispatch({
-        type: 'RawMessageList_Add_Msg',
-        payload: { msg, nim: app.globalData.nim }
-      })
+      // store.dispatch({
+      //   type: 'RawMessageList_Add_Msg',
+      //   payload: { msg, nim: app.globalData.nim }
+      // })
     } catch (error) {
       
     }
@@ -250,7 +250,7 @@ export default class IMController {
             title: '账号或密码错误',
             image: '/images/emoji.png'
           })
-          store.dispatch({ type: 'Login_LoginSuccess' })
+         // store.dispatch({ type: 'Login_LoginSuccess' })
           break;
         // 重复登录, 已经在其它端登录了, 请跳转到登录页面并提示错误
         case 417:
@@ -341,10 +341,10 @@ export default class IMController {
   onRoamingMsgs(list) {
     console.log(orderCounter++, ' 漫游消息')
     console.log(list)
-    store.dispatch({
-      type: 'RawMessageList_Add_RoamingMsgList',
-      payload: list
-    })
+    // store.dispatch({
+    //   type: 'RawMessageList_Add_RoamingMsgList',
+    //   payload: list
+    // })
   }
   /**
    * 连接出错
@@ -385,90 +385,90 @@ export default class IMController {
   */
   onCreateTeam(team) {
     console.log(orderCounter++, ' onCreateTeam')
-    store.dispatch({
-      type: 'Add_Group',
-      payload: team
-    })
+    // store.dispatch({
+    //   type: 'Add_Group',
+    //   payload: team
+    // })
   }
   /**
   *  群成员信息更新后的回调, 会传入群成员对象, 不过此时的信息是不完整的, 只会包括被更新的字段。当前登录帐号在其它端修改自己的群属性时也会收到此回调。
   */
   onUpdateTeamMember(teamMember) {
     console.log(orderCounter++, 'onUpdateTeamMember')
-    store.dispatch({
-      type: 'Update_Group_Member',
-      payload: teamMember
-    })
+    // store.dispatch({
+    //   type: 'Update_Group_Member',
+    //   payload: teamMember
+    // })
   }
   /**
   *  新成员入群的回调，自己建群成功也回调
   */
   onAddTeamMembers(msg) {
     console.log(orderCounter++, 'onAddTeamMembers')
-    store.dispatch({
-      type: 'Add_Group_Members',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Add_Group_Members',
+    //   payload: msg
+    // })
   }
   /**
   *  有人出群的回调
   */
   onRemoveTeamMembers(msg) {
     console.log(orderCounter++, 'onRemoveTeamMembers')
-    store.dispatch({
-      type: 'Del_Group_Member',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Del_Group_Member',
+    //   payload: msg
+    // })
   }
   /**
   *  更新群的回调
   */
   onUpdateTeam(msg) {
     console.log(orderCounter++, 'onUpdateTeam')
-    store.dispatch({
-      type: 'Update_Group',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Update_Group',
+    //   payload: msg
+    // })
   }
   /**
   *  更新群管理员的回调
   */
   onUpdateTeamManagers(msg) {
     console.log(orderCounter++, 'onUpdateTeamManagers')
-    store.dispatch({
-      type: 'Update_Group_Member_Manager',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Update_Group_Member_Manager',
+    //   payload: msg
+    // })
   }
   /**
   *  解散群的回调
   */
   onDismissTeam(msg) {
     console.log(orderCounter++, 'onDismissTeam')
-    store.dispatch({
-      type: 'Del_Group',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Del_Group',
+    //   payload: msg
+    // })
   }
   /**
   *  移交群的回调
   */
   onTransferTeam(msg) {
     console.log(orderCounter++, 'onTransferTeam')
-    store.dispatch({
-      type: 'Update_Group_Owner',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Update_Group_Owner',
+    //   payload: msg
+    // })
   }
   /**
   *  更新群成员禁言状态的回调
   */
   onUpdateTeamMembersMute(msg) {
     console.log(orderCounter++, 'onUpdateTeamMembersMute')
-    store.dispatch({
-      type: 'Add_Group_Members',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'Add_Group_Members',
+    //   payload: msg
+    // })
   }
   /**
   *  群消息通知是否加入未读数开关如果返回true，则计入未读数，否则不计入
@@ -484,18 +484,18 @@ export default class IMController {
    */
   onSessions(sessions) {
     console.log('onSessions: ', sessions)
-    store.dispatch({
-      type: 'SessionUnreadInfo_update',
-      payload: sessions
-    })
+    // store.dispatch({
+    //   type: 'SessionUnreadInfo_update',
+    //   payload: sessions
+    // })
   }
   onOfflineMsgs(msg) {
     console.log(orderCounter++, ' onOfflineMsgs')
     console.log(msg)
-    store.dispatch({
-      type: 'RawMessageList_Add_OfflineMessage',
-      payload: msg
-    })
+    // store.dispatch({
+    //   type: 'RawMessageList_Add_OfflineMessage',
+    //   payload: msg
+    // })
   }
   // 系统通知
   onOfflineSysMsgs(msg) {
@@ -506,10 +506,10 @@ export default class IMController {
   onUpdateSysMsg(sysMsg) {
     console.log(orderCounter++, ' onUpdateSysMsg')
     console.log(sysMsg)
-    store.dispatch({
-      type: 'Update_Sys_Msg',
-      payload: sysMsg
-    })
+    // store.dispatch({
+    //   type: 'Update_Sys_Msg',
+    //   payload: sysMsg
+    // })
   }
   onCustomSysMsg(sysMsg) {
     console.log(orderCounter++, ' onCustomSysMsg')
@@ -527,10 +527,10 @@ export default class IMController {
       let currentPage = pages[pages.length - 1]
       if (currentPage.route.includes('videoCallMeeting') === false) { // 不在多人通话中，才提示
         sysMsg.content = content
-        store.dispatch({
-          type: 'Netcall_Set_GroupCall',
-          payload: sysMsg
-        })
+        // store.dispatch({
+        //   type: 'Netcall_Set_GroupCall',
+        //   payload: sysMsg
+        // })
         wx.navigateTo({
           url: `/partials/videoCallMeeting/videoCallMeeting?beCalling=true`,
         })

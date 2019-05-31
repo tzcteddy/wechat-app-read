@@ -1,4 +1,5 @@
 let currentPage={};//当前页面
+let app=getApp();
 let eventConfig={
   toUserDetail(event){
       var userId=event.currentTarget.dataset.id;
