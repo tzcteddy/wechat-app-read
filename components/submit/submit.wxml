@@ -4,9 +4,45 @@
       <scroll-view scroll-y class="inputWrap">
         <textarea></textarea>
       </scroll-view>
-      <view  class="emojiEntry">😜</view>
-      <view class="other">+</view>
+      <view  class="emojiEntry" catchtap='toggleEmoji'>😜</view>
+      <view class="other" catchtap='toggleMore'>+</view>
       <view class="send">发送</view>
    </view>
    <view class=""></view>
+   <view wx:if="{{emojiFlag}}" class='chatinput-subcontent'>
+      <component-emoji bind:EmojiClick="emojiCLick" bind:EmojiSend="emojiSend"></component-emoji>
+    </view>
+    <view wx:if="{{moreFlag}}" class='more-subcontent'>
+      <view style='display:flex;justify-content: space-between;'>
+        <view class='more-subcontent-item' catchtap='chooseImageToSend'>
+          <image src="../../image/photo.png" class='image'></image>
+          <text class='text'>相册</text>
+        </view>
+        <view class='more-subcontent-item' catchtap='chooseImageOrVideo'>
+          <image src="../../image/shoot.png" class='image'></image>
+          <text class='text'>拍摄</text>
+        </view>
+        <!-- <view class='more-subcontent-item'><view class='image'></view><text class='text'>文件</text></view> -->
+        <view class='more-subcontent-item' catchtap='showTipMessagePanel'>
+          <image src="../../image/tip.png" class='image'></image>
+          <text class='text'>Tip</text>
+        </view>
+        <view class='more-subcontent-item' catchtap='sendFingerGuess'>
+          <image src="../../image/morra.png" class='image'></image>
+          <text class='text'>猜拳</text>
+        </view>
+      </view>
+      <view style='display:flex;justify-content: space-between;'>
+        <view class='more-subcontent-item' catchtap='choosePosition'>
+          <image src="../../image/location.png" class='image'></image>
+          <text class='text'>位置</text>
+        </view>
+        <view class='more-subcontent-item' catchtap='videoCall'>
+          <image src="../../image/location.png" class='image'></image>
+          <text class='text'>视频通话</text>
+        </view>
+        <view class='more-subcontent-item'><view class='image' style='background-color: transparent;'></view><text class='text'></text></view>
+        <view class='more-subcontent-item'><view class='image' style='background-color: transparent;'></view><text class='text'></text></view>
+      </view>
+    </view> 
 </view>
